@@ -1,4 +1,4 @@
-import { atom, useRecoilValue } from 'recoil';
+import { atom, useRecoilState } from 'recoil';
 import { PointerState } from 'types/pointer';
 
 const defaultPointerState: PointerState = {
@@ -12,6 +12,6 @@ const pointerState = atom({
 });
 
 export function usePointerState() {
-  const state = useRecoilValue(pointerState);
+  const state = useRecoilState(pointerState);
   return state;
 }
