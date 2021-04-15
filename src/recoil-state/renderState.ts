@@ -1,4 +1,4 @@
-import { atom, useRecoilValue } from 'recoil';
+import { atom, selector, useRecoilValue } from 'recoil';
 import { FlexComponent } from 'types';
 
 const defaultState: FlexComponent[] = [
@@ -73,10 +73,16 @@ export const renderState = atom({
 });
 
 export function useFlexComponent(id: string) {
-  const state = useRecoilValue(renderState);
-  const flexComponent = state.find((component) => component.id === id);
+  const flexComponentSelector = selector({
+    key: 'flexComponentById',
+    get: ({ get }) => {
+      const state = get(renderState);
+      return state.find((component) => component.id === id);
+    },
+  });
+  const flexComponent = useRecoilValue(flexComponentSelector);
   if (!flexComponent) {
-    throw new Error('could not find flex component with that id');
+    throw new Error('Could not find flex component with that id');
   }
   return flexComponent;
 }
