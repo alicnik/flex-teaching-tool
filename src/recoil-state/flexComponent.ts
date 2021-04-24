@@ -38,8 +38,3 @@ export const flexComponentStateSelector = selectorFamily<FlexComponent, string>(
     );
   },
 });
-
-// export function useFlexComponentState(id: string) {
-//   const flexComponentState = useRecoilState(flexComponentStateSelector);
-//   return flexComponentState;
-// }

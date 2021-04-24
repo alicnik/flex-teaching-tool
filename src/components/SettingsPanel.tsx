@@ -13,11 +13,12 @@ export function SettingsPanel() {
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setComponent({ ...component, [e.target.name]: e.target.value as JustifyContent });
   }
+
   return (
     <div>
       <label>
         <code>justify-content</code>
-        <select name="justifyContent" onChange={handleChange}>
+        <select name="justifyContent" value={component.justifyContent} onChange={handleChange}>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -29,7 +30,7 @@ export function SettingsPanel() {
       <br />
       <label>
         <code>align-items</code>
-        <select name="alignItems" onChange={handleChange}>
+        <select name="alignItems" value={component.alignItems} onChange={handleChange}>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
