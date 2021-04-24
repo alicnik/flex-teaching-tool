@@ -1,12 +1,12 @@
-import { atom, useRecoilState } from 'recoil';
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 import { PointerState } from 'types/pointer';
 
 const defaultPointerState: PointerState = {
   currentlySelectedId: 'base',
-  currentlyHoveredId: null,
+  currentlyHoveredId: '',
 };
 
-const pointerState = atom({
+export const pointerState = atom({
   key: 'pointerState',
   default: defaultPointerState,
 });
@@ -14,4 +14,13 @@ const pointerState = atom({
 export function usePointerState() {
   const state = useRecoilState(pointerState);
   return state;
+}
+
+export const currentlySelectedSelector = selector({
+  key: 'currentlySelectedSelector',
+  get: ({ get }) => get(pointerState).currentlySelectedId,
+});
+
+export function useCurrentlySelected() {
+  return useRecoilValue(currentlySelectedSelector);
 }

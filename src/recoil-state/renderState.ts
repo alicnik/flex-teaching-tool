@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 import { FlexComponent } from 'types';
 
 interface DefaultRenderState {
@@ -78,4 +78,12 @@ const defaultState: DefaultRenderState = {
 export const renderState = atom({
   key: 'renderState',
   default: defaultState,
+});
+
+export const layoutState = selector({
+  key: 'renderLayoutState',
+  get: ({ get }) => {
+    const state = get(renderState);
+    return state.layout;
+  },
 });

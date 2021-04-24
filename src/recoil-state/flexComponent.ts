@@ -1,4 +1,4 @@
-import { selector, useRecoilValue, DefaultValue, useRecoilState } from 'recoil';
+import { selector, useRecoilValue, DefaultValue, useRecoilState, selectorFamily } from 'recoil';
 import { renderState } from 'recoil-state';
 import { FlexComponent } from 'types';
 
@@ -22,23 +22,24 @@ export const baseComponentIdSelector = selector<string>({
   },
 });
 
-export function useFlexComponentState(id: string) {
-  const flexComponentStateSelector = selector<FlexComponent>({
-    key: 'flexComponentStateById',
-    get: ({ get }) => {
-      const state = get(renderState);
-      return state.layout[id];
-    },
-    set: ({ set, get }, newValue) => {
-      const currentState = get(renderState);
-      set(
-        renderState,
-        newValue instanceof DefaultValue
-          ? newValue
-          : { ...currentState, layout: { ...currentState.layout, [id]: newValue } }
-      );
-    },
-  });
-  const flexComponentState = useRecoilState(flexComponentStateSelector);
-  return flexComponentState;
-}
+export const flexComponentStateSelector = selectorFamily<FlexComponent, string>({
+  key: 'flexComponentStateById',
+  get: (id) => ({ get }) => {
+    const state = get(renderState);
+    return state.layout[id];
+  },
+  set: (id) => ({ set, get }, newValue) => {
+    const currentState = get(renderState);
+    set(
+      renderState,
+      newValue instanceof DefaultValue
+        ? newValue
+        : { ...currentState, layout: { ...currentState.layout, [id]: newValue } }
+    );
+  },
+});
+
+// export function useFlexComponentState(id: string) {
+//   const flexComponentState = useRecoilState(flexComponentStateSelector);
+//   return flexComponentState;
+// }

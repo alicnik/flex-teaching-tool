@@ -1,4 +1,5 @@
-import { useFlexComponentValue } from 'recoil-state';
+import { useRecoilValue } from 'recoil';
+import { layoutState } from 'recoil-state';
 import { usePointerState } from 'recoil-state/pointerState';
 
 interface FlexComponentRendererState {
@@ -6,7 +7,8 @@ interface FlexComponentRendererState {
 }
 
 export function FlexComponentRenderer({ id }: FlexComponentRendererState) {
-  const flexComponent = useFlexComponentValue(id);
+  const state = useRecoilValue(layoutState);
+  const flexComponent = state[id];
   const [pointerState, setPointerState] = usePointerState();
   const isSelected = pointerState.currentlySelectedId === id;
   const isHovered = pointerState.currentlyHoveredId === id;

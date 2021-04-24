@@ -1,12 +1,13 @@
 import { Renderer } from 'components/Renderer';
-import { RecoilRoot } from 'recoil';
+import { SettingsPanel } from 'components/SettingsPanel';
 
 function App() {
   return (
-    <RecoilRoot>
-      <div>Hello World!</div>
+    <>
+      <SettingsPanel />
+      <div style={{ height: 100 }} />
       <Renderer />
-    </RecoilRoot>
+    </>
   );
 }
 
