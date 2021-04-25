@@ -1,4 +1,4 @@
-import { selector, useRecoilValue, DefaultValue, useRecoilState, selectorFamily } from 'recoil';
+import { selector, useRecoilValue, DefaultValue, selectorFamily } from 'recoil';
 import { renderState } from 'recoil-state';
 import { FlexComponent } from 'types';
 
