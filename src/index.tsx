@@ -7,11 +7,11 @@ import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <RecoilRoot>
+    <App />
+  </RecoilRoot>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

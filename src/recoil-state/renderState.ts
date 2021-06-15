@@ -21,7 +21,7 @@ const defaultState: DefaultRenderState = {
       flexDirection: 'row',
       flexWrap: 'nowrap',
       width: 'auto',
-      height: '100%',
+      minHeight: '200px',
       gap: '10px',
     },
     'first-child': {

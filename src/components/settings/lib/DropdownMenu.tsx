@@ -11,16 +11,17 @@ import { AlignItems, FlexDirection, FlexWrap, JustifyContent } from 'types';
 
 type PropertyName = 'justifyContent' | 'alignItems' | 'flexDirection' | 'flexWrap';
 
-interface DropdownProps {
+interface DropdownMenuProps {
   property: PropertyName;
   value: JustifyContent | AlignItems | FlexDirection | FlexWrap;
   onChange: (p: PropertyName) => (e: React.ChangeEvent<{ value: unknown }>) => void;
-  helperText: string;
+  helperText?: string;
 }
 
-export function Dropdown({ property, value, onChange, helperText }: DropdownProps) {
+export function DropdownMenu({ property, value, onChange, helperText }: DropdownMenuProps) {
   const styles = useStyles();
   const label = kebabCase(property);
+
   return (
     <FormControl variant="outlined" margin="dense" className={styles.formControl}>
       <InputLabel>{label}</InputLabel>

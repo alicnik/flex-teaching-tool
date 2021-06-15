@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { layoutState } from 'recoil-state';
 import { usePointerState } from 'recoil-state/pointerState';
+import { FlexComponent } from 'types';
 
 interface FlexComponentRendererState {
   id: string;
@@ -8,7 +9,7 @@ interface FlexComponentRendererState {
 
 export function FlexComponentRenderer({ id }: FlexComponentRendererState) {
   const state = useRecoilValue(layoutState);
-  const flexComponent = state[id];
+  const flexComponent: FlexComponent = state[id];
   const [pointerState, setPointerState] = usePointerState();
   const isSelected = pointerState.currentlySelectedId === id;
   const isHovered = pointerState.currentlyHoveredId === id;
@@ -18,6 +19,7 @@ export function FlexComponentRenderer({ id }: FlexComponentRendererState) {
   }
 
   const { id: componentId, children, ...flexStyles } = flexComponent;
+
   function updatePointerState(e: React.MouseEvent, key: string) {
     e.stopPropagation();
     setPointerState({ ...pointerState, [key]: id });

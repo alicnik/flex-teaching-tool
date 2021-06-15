@@ -23,6 +23,7 @@ export interface FlexComponent {
   flexDirection: FlexDirection;
   flexWrap: FlexWrap;
   width: string;
-  height: string;
   gap: string;
+  height?: string;
+  minHeight?: string;
 }

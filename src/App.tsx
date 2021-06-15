@@ -1,5 +1,5 @@
-import { Renderer } from 'components/Renderer';
-import { SettingsPanel } from 'components/SettingsPanel';
+import { Renderer } from 'components/BaseRenderer';
+import { SettingsPanel } from 'components/settings/SettingsPanel';
 
 function App() {
   return (
