@@ -55,7 +55,9 @@ export function AddRemoveChildren({ id }: AddRemoveChildrenProps) {
     <>
       <Button onClick={handleAdd}>Add child</Button>
       <Button onClick={handleRemove}>Remove child</Button>
-      <Button onClick={handleReset}>Reset children</Button>
+      <Button onClick={handleReset} disabled={component.children.length === 3}>
+        Reset children
+      </Button>
     </>
   );
 }
