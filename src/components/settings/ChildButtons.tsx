@@ -35,7 +35,10 @@ export function AddRemoveChildren({ id }: AddRemoveChildrenProps) {
   }
 
   function handleReset() {
-    const newChildren = Array(3).fill(null).map(createNewChild);
+    const newChildren = Array(3)
+      .fill(null)
+      .map(createNewChild)
+      .map((child) => ({ ...child, parent: id }));
     setRenderState((existingState) => {
       const layout = { ...existingState.layout };
       for (const componentId in layout) {

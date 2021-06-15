@@ -8,7 +8,7 @@ import { ChildSettings } from './AddRemoveChildren';
 export function SettingsPanel() {
   const id = useRecoilValue(currentlySelectedSelector);
   const [component, setComponent] = useRecoilState(flexComponentStateSelector(id!));
-
+  console.log(component.parent);
   return component.parent ? (
     <ChildSettings />
   ) : (
